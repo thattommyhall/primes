@@ -1,5 +1,6 @@
 (def primes
      (concat
+
       [2 3 5 7]
       (lazy-seq
        (let [primes-from
@@ -13,7 +14,8 @@
 			   2 6 6 4 2 4 6 2 6 4 2 4 2 10 2 10])]
 	 (primes-from 11 wheel)))))
 
-(println (take 10 primes))
+(println "primes")
+(println (take 30 primes))
 
 
 (def primes-simple
@@ -28,32 +30,38 @@
 		 (lazy-seq (cons n (primes-from (+ n 1))))))]
 	 (primes-from 11)))))
 
-(println (take 10 primes-simple))
-
+(println "primes simple")
+(println (take 30 primes-simple))
 
 
 (def primes-sieve
      (concat
-      [2]
+      [2 3 5 7]
       (lazy-seq
        (let [primes-from
 	     (fn primes-from [n composites]
-	       (if (= n (ffirst composites))
+	       (if (contains? composites n)
 		 (recur (+ n 1)
 			(merge
 			 (dissoc composites n)
-			 ;need to add code for updated composites map
-			 ())
-			 
-			(lazy-seq
-			 (cons n
-			       (primes-from (+ n 1)
-					    (assoc composites
-					      (* n n)
-					      (concat (composites (* n n)) [n])))))))]
-	     (primes-from 3 (sorted-map 4 [2])))))))
+			 (zipmap (map +
+				      (cycle [n])
+				      (composites n))
+				 (map #(concat (composites (+ n %))
+					       [%])  
+				      (composites n)))))
+		 (lazy-seq
+		  (cons n
+			(primes-from (+ n 1)
+				     (assoc
+					 composites
+				       (* n n)
+				       (concat (composites (* n n)) [n])))))))]
+	 (primes-from 11 (sorted-map 12 [2 3],
+				     14 [7],
+				     15 [5] ))))))
 
 
-
-(println (take 10 primes-sieve))
+(println "primes-sieve")
+(println (take 30 primes-sieve))
 
