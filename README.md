@@ -1,8 +1,9 @@
 # primes
 
 Trying to implement the Genuine Sieve of Eratosthenes from:
-       * http://lambda-the-ultimate.org/node/3127
-       * http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
+
+* http://lambda-the-ultimate.org/node/3127
+* http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
 
 
 
