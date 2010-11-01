@@ -34,7 +34,7 @@
       (lazy-seq
        (let [primes-from
 	     (fn primes-from [n composites]
-	       (if (contains? composites n)
+	       (if (= (ffirst composites) n)
 		 (recur (+ n 1)
 			(merge
 			 (dissoc composites n)
