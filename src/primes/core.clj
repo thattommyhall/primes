@@ -47,12 +47,12 @@
 									(cons n
 												(primes-from (+ n 1)
 																		 (assoc
-																				 composites
-																			 (* n n)
-																			 (concat (composites (* n n)) [n])))))))]
+			                                   composites
+                                       (* n n)
+                                       (concat (composites (* n n)) [n])))))))]
          (primes-from 11 (sorted-map 12 [2 3],
-																		 14 [7],
-	                                	 15 [5] ))))))
+                                     14 [7],
+                                  	 15 [5] ))))))
 
 
 
