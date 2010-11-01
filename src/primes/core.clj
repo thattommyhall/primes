@@ -2,7 +2,6 @@
 
 (def primes
      (concat
-
       [2 3 5 7]
       (lazy-seq
        (let [primes-from
@@ -54,5 +53,13 @@
 	 (primes-from 11 (sorted-map 12 [2 3],
 				     14 [7],
 				     15 [5] ))))))
+
+(if (= (take 1000 primes)
+       (take 1000 primes-simple)
+       (take 1000 primes-sieve))
+  (println "prime-sieve works for 1...1000")
+  (println "ITS FOOKED"))
+
+
 
 
