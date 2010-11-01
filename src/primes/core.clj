@@ -54,11 +54,7 @@
 				     14 [7],
 				     15 [5] ))))))
 
-(if (= (take 1000 primes)
-       (take 1000 primes-simple)
-       (take 1000 primes-sieve))
-  (println "prime-sieve works for 1...1000")
-  (println "ITS FOOKED"))
+
 
 
 
