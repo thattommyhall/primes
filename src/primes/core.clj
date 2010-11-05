@@ -33,29 +33,24 @@
       (lazy-seq
        (let [primes-from
              (fn primes-from [n composites]
-               (if (= (ffirst composites) n)
-                 (recur (+ n 1)
-                        (merge
-                         (dissoc composites n)
-                         (zipmap (map +
-                                      (cycle [n])
-                                      (composites n))
-                                 (map #(concat (composites (+ n %))
-                                               [%])  
-                                      (composites n)))))
-                 (lazy-seq
-                  (cons n
-                        (primes-from (+ n 1)
-                                     (assoc
-                                         composites
-                                       (* n n)
-                                       (concat (composites (* n n)) [n])))))))]
-         (primes-from 11 (sorted-map 12 [2 3],
-                                     14 [7],
-                                     15 [5] ))))))
-
-
-
-
+	       (if (nil? (composites n))
+		 (lazy-seq
+		  (cons n
+			(primes-from (+ n 2)
+				     (assoc
+					 composites
+				       (* n n)
+				       (concat (composites (* n n)) [(* 2 n)])))))
+		 (recur (+ n 2)
+			(merge
+			 (dissoc composites n)
+			 (zipmap (map +
+				      (cycle [n])
+				      (composites n))
+				 (map #(concat (composites (+ n %))
+					       [%])  
+				      (composites n)))))))]
+	 (primes-from 11 (sorted-map 15 [6 10]
+				     21 [14]))))))
 
 

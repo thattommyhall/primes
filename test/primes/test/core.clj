@@ -9,14 +9,16 @@
 	 (take 1000 primes-simple)
 	 (take 1000 primes-sieve))))
 
+(def n 1000000)
+
 (println "primes lazy mistake")
-(time (take 10 (drop 100000 primes)))
+(time (take 10 (drop n primes)))
 
 (println "primes")
-(time (sequence (take 5 (drop 5000000 primes)) ))
+(time (println (take 5 (drop n primes)) ))
 
 (println "primes-simple")
-(time (sequence (take 5 (drop 5000000 primes-simple)) ))
+(time (println (take 5 (drop n primes-simple)) ))
 
 (println "primes-sieve")
-(time (sequence (take 5 (drop 5000000 primes-sieve)) ))
+(time (println (take 5 (drop n primes-sieve)) ))
