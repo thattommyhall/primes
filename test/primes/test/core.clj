@@ -10,13 +10,13 @@
 	 (take 1000 primes-sieve))))
 
 (println "primes lazy mistake")
-(criterium.core/bench (take 10 (drop 100000 primes)) )
+(time (take 10 (drop 100000 primes)))
 
 (println "primes")
-(criterium.core/bench (println (take 5 (drop 100000 primes)) ))
+(time (sequence (take 5 (drop 5000000 primes)) ))
 
 (println "primes-simple")
-(criterium.core/bench (println (take 5 (drop 100000 primes-simple)) ))
+(time (sequence (take 5 (drop 5000000 primes-simple)) ))
 
 (println "primes-sieve")
-(criterium.core/bench (println (take 5 (drop 100000 primes-sieve)) ))
+(time (sequence (take 5 (drop 5000000 primes-sieve)) ))
